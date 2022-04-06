@@ -7,9 +7,13 @@ output:
     df_print: paged
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 # how i met your mother
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/How_i_met_your_mother_logo.svg/440px-How_i_met_your_mother_logo.svg.png"/>
+`fig.align= 'center'`<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/How_i_met_your_mother_logo.svg/440px-How_i_met_your_mother_logo.svg.png" width="460" height="300"/>
 
 **How I Met Your Mother** (often abbreviated as **HIMYM**) is an
 American sitcom, created by *Craig Thomas* and *Carter Bays* for CBS.
@@ -78,10 +82,17 @@ ggplot(variations, aes(x = season, y = changes)) +
 # i can't understand why in the x label it shows me just 2.5 , 5 and 7.5 !
 ```
 
-### conclusion
+#### conclusion
 
 as we can see there are no evidence of a trend during the time.
 
-anyway we can note that:
+##### anyway we can note that:
 
--   the season with more viewers `r max(views$viewers)`
+-   the season with more viewers is the season
+    `r views[views$viewers == max(views$viewers),]$season` with
+    `r max(views$viewers)` milion viewers.
+-   the least watched season was season
+    `r views[views$viewers == min(views$viewers),]$season` with
+    `r min(views$viewers)` milion viewers;
+-   the more and the least watched season has a different of exactly
+    `r max(views$viewers) - min(views$viewers)` milion viewers
